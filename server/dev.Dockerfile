@@ -8,7 +8,11 @@ ENV PATH="/root/.local/bin:$PATH"
 
 # Copy requirements first for better caching
 COPY server/requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    --trusted-host pypi.tuna.tsinghua.edu.cn \
+    --timeout 600 \
+    --retries 10 \
+    -r requirements.txt
 
 # Install mem0 in editable mode using Poetry
 WORKDIR /app/packages

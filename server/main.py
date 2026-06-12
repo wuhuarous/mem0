@@ -118,15 +118,14 @@ DEFAULT_EMBEDDER_MODEL = os.environ.get("MEM0_DEFAULT_EMBEDDER_MODEL", "text-emb
 DEFAULT_CONFIG = {
     "version": "v1.1",
     "vector_store": {
-        "provider": "pgvector",
-        "config": {
-            "host": POSTGRES_HOST,
-            "port": int(POSTGRES_PORT),
-            "dbname": POSTGRES_DB,
-            "user": POSTGRES_USER,
-            "password": POSTGRES_PASSWORD,
-            "collection_name": POSTGRES_COLLECTION_NAME,
-        },
+          "provider": "qdrant",
+          "config": {
+              "host": "qdrant",         
+              "port": 6333,
+              "collection_name": "mem0-qdrant",
+              "embedding_model_dims": 1536,  
+          },
+
     },
     "llm": {
         "provider": "openai",
