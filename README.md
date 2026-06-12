@@ -46,11 +46,39 @@
 
 ## 快速启动
 
-### 1. 克隆并启动
+### 1. 克隆并配置
 
 ```bash
 git clone https://github.com/wuhuarous/mem0.git
 cd mem0/server
+```
+
+创建 `server/.env` 文件（参考下方模板），填入你的 API Key：
+
+```env
+# LLM 服务的 API Key（用于 mem0 默认配置）
+OPENAI_API_KEY=sk-your-key-here
+
+# 数据库配置（默认值一般不用改）
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+
+# 管理员 API Key，自行生成一个随机字符串
+ADMIN_API_KEY=your-random-admin-key
+JWT_SECRET=your-random-jwt-secret
+
+# 关闭内置认证（本地开发可设为 true）
+AUTH_DISABLED=false
+```
+
+> **注意：** `OPENAI_API_KEY` 仅用于 mem0 的默认配置。实际使用时，你可以通过 API 请求中的 `llm.config.api_key` 和 `llm.config.openai_base_url` 覆盖，支持任何 OpenAI 兼容的模型服务（Grok、通义千问、DeepSeek 等）。.env 中的 Key 可以随便填一个占位值。
+
+### 2. 启动服务
+
+```bash
 docker compose up -d
 ```
 
