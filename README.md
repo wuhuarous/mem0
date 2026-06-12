@@ -93,7 +93,13 @@ NEXT_PUBLIC_INSTANCE_NAME=Mem0
 docker compose up -d
 ```
 
-### 2. 服务列表
+如果运行报错提示缺少数据库，执行以下命令手动创建：
+
+```bash
+docker compose exec postgres psql -U postgres -c "CREATE DATABASE mem0_app;"
+```
+
+### 3. 服务列表
 
 | 服务 | 地址 |
 |---|---|
