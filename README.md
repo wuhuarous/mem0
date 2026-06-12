@@ -53,7 +53,7 @@ git clone https://github.com/wuhuarous/mem0.git
 cd mem0/server
 ```
 
-创建 `server/.env` 文件（参考下方模板），填入你的 API Key：
+创建 `server/.env` 文件：
 
 ```env
 # LLM 服务的 API Key（用于 mem0 默认配置）
@@ -72,6 +72,17 @@ JWT_SECRET=your-random-jwt-secret
 
 # 关闭内置认证（本地开发可设为 true）
 AUTH_DISABLED=false
+```
+
+创建 `server/dashboard/.env` 文件：
+
+```env
+# 浏览器访问的 API 地址（用户端）
+NEXT_PUBLIC_API_URL=http://localhost:8888
+# 容器内部访问 mem0 API 的地址
+API_INTERNAL_URL=http://mem0:8000
+# Dashboard 显示的实例名称
+NEXT_PUBLIC_INSTANCE_NAME=Mem0
 ```
 
 > **注意：** `OPENAI_API_KEY` 仅用于 mem0 的默认配置。实际使用时，你可以通过 API 请求中的 `llm.config.api_key` 和 `llm.config.openai_base_url` 覆盖，支持任何 OpenAI 兼容的模型服务（Grok、通义千问、DeepSeek 等）。.env 中的 Key 可以随便填一个占位值。
